@@ -1,19 +1,28 @@
 <?php
-// если нет значения — создаём пустое
+
+// строка
 if (!isset($_GET['store'])) {
     $_GET['store'] = '';
 }
 
-// если нажали кнопку
-if (isset($_GET['key'])) {
-    $_GET['store'] .= $_GET['key'];
+// счётчик
+if (!isset($_GET['count'])) {
+    $_GET['count'] = 0;
 }
 
-// результат
-$result = $_GET['store'];
+// если нажали кнопку
+if (isset($_GET['key'])) {
+    if ($_GET['key'] == 'reset') {
+        $_GET['store'] = ''; // очищаем строку
+    } else {
+        $_GET['store'] .= $_GET['key']; // добавляем цифру
+    }
 
-// счётчик нажатий
-$clicks = strlen($result);
+    $_GET['count']++; // УВЕЛИЧИВАЕМ СЧЁТЧИК ВСЕГДА
+}
+
+$result = $_GET['store'];
+$clicks = $_GET['count'];
 ?>
 
 <!DOCTYPE html>
@@ -84,16 +93,16 @@ footer {
 <?php
 // кнопки 1-9
 for ($i = 1; $i <= 9; $i++) {
-    echo '<a href="?key='.$i.'&store='.$result.'">'.$i.'</a>';
+    echo '<a href="?key='.$i.'&store='.$result.'&count='.$clicks.'">'.$i.'</a>';
 }
 
 // кнопка 0
-echo '<br><a href="?key=0&store='.$result.'">0</a>';
+echo '<br><a href="?key=0&store='.$result.'&count='.$clicks.'">0</a>';
 ?>
 
 <br>
 
-<a class="reset" href="index.php">СБРОС</a>
+<a class="reset" href="?key=reset&store=<?php echo $result; ?>&count=<?php echo $clicks; ?>">СБРОС</a>
 
 </div>
 
