@@ -156,7 +156,7 @@ function buildRowsDoWhile(
     return $rows;
 }
 
-// Вычисляем, чтобы на защите можно было показать, что все три цикла исследованы
+// Все три цикла исследованы
 $rowsWhile = buildRowsWhile($startValue, $stepsCount, $step, $minValue, $maxValue);
 $rowsDoWhile = buildRowsDoWhile($startValue, $stepsCount, $step, $minValue, $maxValue);
 ?>
