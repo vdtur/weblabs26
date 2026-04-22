@@ -2,7 +2,7 @@
 declare(strict_types=1);
 date_default_timezone_set('Europe/Moscow');
 
-$studentName = 'Турбабин Вадим Дмириевич';
+$studentName = 'Турбабин Вадим Дмитриевич';
 $groupName = '241-353';
 $labNumber = 'Лабораторная работа № А-5';
 
